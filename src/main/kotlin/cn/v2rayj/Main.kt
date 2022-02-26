@@ -19,15 +19,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import cn.v2rayj.theme.AppTheme.lightThemeColors
+import cn.v2rayj.ui.FileChoose
 
 @Composable
 @Preview
 fun App() {
     var text by remember { mutableStateOf("Hello, World!") }
 
-    MaterialTheme {
+    MaterialTheme(
+        colors = lightThemeColors
+    ) {
         Button(onClick = {
-            text = "Hello, Desktop!"
+            FileChoose.instance.show {
+                text = it!!
+            }
         }) {
             Text(text)
         }
@@ -37,6 +43,7 @@ fun App() {
 }
 
 fun main() = application {
+
 
     var isVisible by remember { mutableStateOf(true) }
     var runStatus by remember { mutableStateOf(false) }

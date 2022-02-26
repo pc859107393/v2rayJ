@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -117,6 +118,17 @@ public class JsonUtil {
         }
         try {
             return objectMapper.readValue(json, type);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @NotNull
+    public static <T> T parseObject(@NotNull byte[] bytes,
+                                    @NotNull Class<T> valueType) {
+        try {
+            return objectMapper.readValue(bytes, valueType);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
