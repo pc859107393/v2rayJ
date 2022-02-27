@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import cn.v2rayj.proxy.ProxyServer
 import cn.v2rayj.theme.AppTheme.lightThemeColors
 import cn.v2rayj.ui.FileChoose
 
@@ -73,7 +74,11 @@ fun main() = application {
                 Separator()
                 Item("运行状态：${runStatus}", onClick = {
                     runStatus = runStatus.not()
-                    //发送控制指令
+                    if (runStatus) {
+                        ProxyServer.instance.start(8999)
+                    } else {
+                        ProxyServer.instance.stop()
+                    }
                 })
                 Separator()
                 Item("Pac自动模式", onClick = {
