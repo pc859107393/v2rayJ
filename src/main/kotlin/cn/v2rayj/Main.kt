@@ -90,6 +90,9 @@ fun main() = application {
                 Item("手动模式", onClick = {
                     //启用全局模式
                 })
+                Item("外部PAC模式", onClick = {
+                    //启用全局模式
+                })
                 Separator()
                 Menu("服务器列表", content = {
 

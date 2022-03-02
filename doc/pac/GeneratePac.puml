@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+participant 浏览器
+participant 内部gfwList
+participant 用户规则
+participant 内存
+
+内部gfwList -> 内存: 获取默认gfwList内容
+用户规则 -> 内存: 读取用户规则内容
+
+内存 --> 内存: 内部gfwList base64解码
+内存 --> 内存: 合并规则，过滤重复内容
+
+内存 -> 外部存储: 存放规则到文件
+
+浏览器 -> 内嵌服务器: 获取规则pac
+内嵌服务器 -> 外部存储: 获取规则
+内存 -> 内存: 根据模板和规则组装PAC
+内存 -> 外部存储: 将PAC保存
+内嵌服务器 -> 浏览器: 返回PAC文件
+@enduml
