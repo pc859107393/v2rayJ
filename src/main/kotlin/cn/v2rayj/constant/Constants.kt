@@ -8,7 +8,7 @@ package cn.v2rayj.constant
  */
 object Constants {
     //基础目录
-    val baseDir = "~/.v2rayJ"
+    val baseDir = "${System.getProperties().getProperty("user.home")}/.v2rayJ"
 
     //基础设置文件
     val baseConfig = "${baseDir}/config.json"
