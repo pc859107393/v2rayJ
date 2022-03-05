@@ -83,6 +83,6 @@ fun main(args: Array<String>) {
         .socket5()
         .appendHost("baidu.com")
         .appendHost(
-            "  \"@@||youdao.com\",\n  \"@@||zhongsou.com\",\n  \"@@|http:\\/\\/ime.baidu.jp\"".toByteArray(Charsets.UTF_8)
+            "  \"@@||youdao.com\",\n  \"@@||zhongsou.com\",\n  \"@@|http:\\/\\/ime.baidu.jp\",\n  \"@@|http:\\/\\/ershoudong.com\"".toByteArray(Charsets.UTF_8)
         ).build(Constants.baseDir)
 }
