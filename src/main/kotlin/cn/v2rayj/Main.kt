@@ -19,11 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Tray
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import cn.v2rayj.constant.Constants
 import cn.v2rayj.proxy.ProxyServer
 import cn.v2rayj.theme.AppTheme.lightThemeColors
 import cn.v2rayj.ui.FileChoose
-import cn.v2rayj.util.PacUtil
 
 @Composable
 @Preview
@@ -46,15 +44,6 @@ fun App() {
 }
 
 fun main() = application {
-
-
-
-    PacUtil.Builder()
-        .socket5()
-        .appendHost("baidu.com")
-        .appendHost(
-            "  \"@@||youdao.com\",\n  \"@@||zhongsou.com\",\n  \"@@|http:\\/\\/ime.baidu.jp\",\n  \"@@|http:\\/\\/ershoudong.com\"".toByteArray(Charsets.UTF_8)
-        ).build(Constants.baseDir)
 
     var isVisible by remember { mutableStateOf(true) }
     var runStatus by remember { mutableStateOf(false) }
