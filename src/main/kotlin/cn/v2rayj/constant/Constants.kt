@@ -13,4 +13,6 @@ object Constants {
     //基础设置文件
     val baseConfig = "${baseDir}/config.json"
 
+    val pacPath = "$baseDir/proxy.pac"
+
 }

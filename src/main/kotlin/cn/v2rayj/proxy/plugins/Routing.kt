@@ -1,5 +1,6 @@
 package cn.v2rayj.proxy.plugins
 
+import cn.v2rayj.constant.Constants
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.http.content.*
@@ -25,7 +26,7 @@ fun Application.configureRouting() {
         }
         get("/proxy.pac") {
             //本地文件暂时不考虑加入缓存
-            call.respondFile(File(""), "proxy.pac")
+            call.respondFile(File(Constants.pacPath), "proxy.pac")
         }
         // Static plugin. Try to access `/static/index.html`
         static("/static") {
