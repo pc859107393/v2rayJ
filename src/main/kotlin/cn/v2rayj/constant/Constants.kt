@@ -15,4 +15,7 @@ object Constants {
 
     val pacPath = "$baseDir/proxy.pac"
 
+    //v2rayJ其他程序文件路径
+    val binPath = "$baseDir/bin"
+
 }
