@@ -13,7 +13,7 @@ object Constants {
     //基础设置文件
     val baseConfig = "${baseDir}/config.json"
 
-    val pacPath = "$baseDir/proxy.pac"
+    val pacPath = "$baseDir"
 
     //v2rayJ其他程序文件路径
     val binPath = "$baseDir/bin"

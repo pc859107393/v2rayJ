@@ -12,18 +12,12 @@ import io.ktor.server.webjars.*
 import java.io.File
 
 fun Application.configureRouting() {
-    install(Locations) {
-    }
-
 
     install(Webjars) {
         path = "/webjars" //defaults to /webjars
     }
 
     routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
         get("/proxy.pac") {
             //本地文件暂时不考虑加入缓存
             call.respondFile(File(Constants.pacPath), "proxy.pac")
@@ -45,18 +39,6 @@ fun Application.configureRouting() {
             call.respondText("<script src='/webjars/jquery/jquery.js'></script>", ContentType.Text.Html)
         }
     }
-}
-
-@Location("/location/{name}")
-class MyLocation(val name: String, val arg1: Int = 42, val arg2: String = "default")
-
-@Location("/type/{name}")
-data class Type(val name: String) {
-    @Location("/edit")
-    data class Edit(val type: Type)
-
-    @Location("/list/{page}")
-    data class List(val type: Type, val page: Int)
 }
 
 class AuthenticationException : RuntimeException()
